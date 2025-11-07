@@ -7,4 +7,6 @@ Functionality:
 - Ordered by user priority level (High, Medium, low)
 - Delete Tasks
 - Stored locally in a JSON file so they persist between sessions
+
+
 ![alt text](image.png)
