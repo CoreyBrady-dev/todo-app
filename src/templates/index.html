@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Tasks</title>
+    <!-- Link to your external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>My Tasks</h1>
-    <ul>
-        {% for task in tasks %}
-            <li>
-                <strong>{{ task.title }}</strong> - Priority: {{ task.priority }}
-                <p>{{ task.description }}</p>
-                <a href="{{ url_for('delete_task', index=loop.index0) }}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
 
-    <h2>Add a Task</h2>
+    <!-- Task Creation Form -->
     <form method="POST">
-        <input type="text" name="title" placeholder="Task title">
-        <select name="priority">
+        <input type="text" name="title" placeholder="Task title" required>
+        <select name="priority" required>
+            <option value="">Select priority</option>
             <option>High</option>
             <option>Medium</option>
             <option>Low</option>
         </select>
-        <textarea name="description" placeholder="Task description" rows="3" cols="30"></textarea>
+        <textarea name="description" placeholder="Task description" rows="3" required></textarea>
         <button type="submit">Add Task</button>
     </form>
 
+    <!-- Task Display Section -->
+    <div class="task-container">
+        {% for task in tasks %}
+        <div class="task-card {{ task.priority | lower }}-priority">
+            <div class="task-header">
+                <h3>{{ task.title }}</h3>
+                <span class="priority">{{ task.priority }}</span>
+            </div>
+            <p>{{ task.description }}</p>
+            <a href="{{ url_for('delete_task', index=loop.index0) }}">
+                <button class="delete-btn">Delete</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

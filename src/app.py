@@ -4,6 +4,7 @@ import json
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 JSON_FILE = os.path.join(BASE_DIR, "..", "data", "tasks.json")
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 app = Flask(__name__)
 
@@ -23,6 +24,9 @@ def home():
             tasks.append({"title": title, "priority": priority, "description": description})
             save_tasks(tasks)
         return redirect(url_for("home"))
+    
+    priority_order = {"High": 1, "Medium": 2, "Low": 3}
+    tasks.sort(key=lambda task: priority_order.get(task["priority"], 4))
 
     return render_template("index.html", tasks=tasks)
 

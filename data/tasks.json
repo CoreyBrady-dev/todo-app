@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "title": "Food",
+        "priority": "Medium",
+        "description": "Eggs, pizza, Milk"
+    },
+    {
+        "title": "Bills",
+        "priority": "High",
+        "description": "Pay Car payment\r\nPay phone bill"
+    },
+    {
+        "title": "chores",
+        "priority": "Low",
+        "description": "do dishes, laundry "
+    },
+    {
+        "title": "appointment",
+        "priority": "High",
+        "description": "Doctors appointment 12/12 @ 2pm"
+    }
+]
